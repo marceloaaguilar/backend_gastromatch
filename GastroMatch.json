@@ -1,0 +1,567 @@
+{
+	"info": {
+		"_postman_id": "e7e9b1ba-0e2c-4eef-b100-3d191576df98",
+		"name": "GastroMatch",
+		"description": "Gastromatch",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33953607",
+		"_collection_link": "https://grey-rocket-566262.postman.co/workspace/My-Workspace~84b91346-9dad-430e-8e08-f9d1655b1bca/collection/33953607-e7e9b1ba-0e2c-4eef-b100-3d191576df98?action=share&source=collection_link&creator=33953607"
+	},
+	"item": [
+		{
+			"name": "Chef",
+			"item": [
+				{
+					"name": "Create Chef",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"specialization\": \"Italiano\",\r\n    \"professional_description\": \"Profissional especializado em comida italiana\",\r\n    \"price_per_hour\": \"300\",\r\n    \"availability\": \"Todos os dias\",\r\n    \"experience\": 1,\r\n    \"user_id\": 8\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/chefs",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"chefs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Chefs",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImlhdCI6MTc0NjM2NjYzNywiZXhwIjoxNzQ2NDUzMDM3fQ.61V6tTp9XRnWRh39TNS2Oj606QShOpRQlnqeG7iVtLE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Marcelo",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "teste5@teste.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "319988776622",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Rua teste",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "profile_photo",
+									"type": "file",
+									"src": "/C:/Users/marce/Downloads/Logo_NIKE.svg.png"
+								},
+								{
+									"key": "role",
+									"value": "CUSTOMER",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/chefs/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"chefs",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reservations",
+			"item": [
+				{
+					"name": "Get Reservation",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NDQxNjg4ODQsImV4cCI6MTc0NDI1NTI4NH0.Y4y_y2COCzKF5q4Yl_QQZOH_ht_KgvxHgnb1wdthV9g",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/reservations/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"reservations",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Reservation by User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImlhdCI6MTc0NjQ4MTY3NywiZXhwIjoxNzQ2NTY4MDc3fQ.xwoBu1FaiMdw2ihOus_iq3Pr3tsHjQNrKba7WiE4LVY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/reservations/user/41",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"reservations",
+								"user",
+								"41"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Reservations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NDQxNjg4ODQsImV4cCI6MTc0NDI1NTI4NH0.Y4y_y2COCzKF5q4Yl_QQZOH_ht_KgvxHgnb1wdthV9g",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/reservations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"reservations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Reservation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImlhdCI6MTc0NjM2NjYzNywiZXhwIjoxNzQ2NDUzMDM3fQ.61V6tTp9XRnWRh39TNS2Oj606QShOpRQlnqeG7iVtLE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customer_name\": \"Marcelo Aguilar\",\r\n    \"customer_cpf\": \"146688018833\",\r\n    \"customer_email\": \"marcelodalmeida42@gmail.com\",\r\n    \"description\": \"Caviar e Champagne\",\r\n    \"phone\": \"31988774433\",\r\n    \"user\": 41,\r\n    \"chef\": 6,\r\n    \"date\": \"2025-04-09\",\r\n    \"location\": \"Savassi\",\r\n    \"guests\": 11,\r\n    \"notes\": \"Público francês\",\r\n    \"mealType\": \"Francesa\",\r\n    \"dietary_restrictions\": \"\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/reservations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"reservations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Reservation",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NDQxNjg4ODQsImV4cCI6MTc0NDI1NTI4NH0.Y4y_y2COCzKF5q4Yl_QQZOH_ht_KgvxHgnb1wdthV9g",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Caviar e Champagne\",\r\n    \"phone\": \"31988774433\",\r\n    \"chef\": 1,\r\n    \"date\": \"2025-04-09\",\r\n    \"location\": \"Funcionários\",\r\n    \"guests\": 11,\r\n    \"notes\": \"Público francês\",\r\n    \"mealType\": \"Francesa\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/reservations/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"reservations",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Reservation",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NDQxNjg4ODQsImV4cCI6MTc0NDI1NTI4NH0.Y4y_y2COCzKF5q4Yl_QQZOH_ht_KgvxHgnb1wdthV9g",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/reservations/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"reservations",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NDUzMzg5NDYsImV4cCI6MTc0NTQyNTM0Nn0.ju85sAxLtNOuYy-VryLZswnDCAXN7OfXxiuKdwX-Fqg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Marcelo",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "marcelooo@teste.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "319988776622",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Rua teste",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "profile_photo",
+									"type": "file",
+									"src": "/C:/Users/marce/Downloads/cinemark-logo-png_seeklogo-388497.png"
+								},
+								{
+									"key": "role",
+									"value": "CUSTOMER",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users/signup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"marcelo2@teste.com\",\r\n    \"password\": \"123456\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users/signin",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/5",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/35",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"35"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Marcelo Aguilar",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "31998226095",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Rua dos Testes",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234567",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "CUSTOMER",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users/8",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Token",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NDU5NzkwNzYsImV4cCI6MTc0NjA2NTQ3Nn0.hk0hYXEmsBo0wF_bwXdKyEH7UMvMUE2dswZBeFH6eu0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/verify-token",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"verify-token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "http://localhost:3000/api/verify-token",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "token=SEU_TOKEN_AQUI"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/verify-token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"verify-token"
+					]
+				},
+				"description": "Generated from cURL: curl -X GET http://localhost:3000/api/verify-token \\\r\n  -H \"Cookie: token=SEU_TOKEN_AQUI\"\r\n"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
