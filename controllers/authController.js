@@ -80,7 +80,7 @@ exports.signin = async (req, res, next) => {
     maxAge: 3600000,
     httpOnly: true,
     sameSite: 'None',
-    secure: false,
+    secure: true,
   });
 
   res.status(200).json({
