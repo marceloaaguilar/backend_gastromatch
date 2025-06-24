@@ -19,7 +19,7 @@ app.use(cookieParser());
 
 app.use(express.json());
 
-app.use(cors({origin: process.env.VITE_API_URL, credentials: true,}));
+app.use(cors({origin: ['http://127.0.0.1:5173', process.env.VITE_API_URL], credentials: true,}));
 
 app.use("/api/users", userRoutes);
 app.use("/api/chefs", chefRoutes);
