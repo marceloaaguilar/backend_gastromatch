@@ -79,7 +79,7 @@ exports.signin = async (req, res, next) => {
   res.cookie('token', token, {
     maxAge: 3600000,
     httpOnly: true,
-    sameSite: 'none',
+    sameSite: 'None',
     secure: false,
   });
 
