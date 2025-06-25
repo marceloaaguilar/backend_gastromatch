@@ -41,15 +41,27 @@ async function connectToRabbitMQ() {
 }
 
 async function publishToQueue(queue, message) {
-  if (!channel) {
-    await connectToRabbitMQ();
+  try {
+    if (!channel) {
+      await connectToRabbitMQ();
+    }
+
+    await channel.assertQueue(queue, { durable: true });
+
+    const sent = channel.sendToQueue(
+      queue,
+      Buffer.from(JSON.stringify(message)),
+      { persistent: true }
+    );
+
+    if (!sent) {
+      throw new Error('A mensagem não pôde ser enviada para a fila.');
+    }
+
+  } catch (error) {
+    console.error(`Erro ao publicar mensagem na fila "${queue}":`, error.message);
   }
-
-  await channel.assertQueue(queue, {durable: true});
-  channel.sendToQueue(queue, Buffer.from(JSON.stringify(message)), {
-    persistent: true
-  });
-
 }
+
 
 module.exports = handleMessage;
