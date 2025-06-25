@@ -9,7 +9,7 @@ exports.getAllChefs = catchAsync(async (req, res, next) => {
   const skip = parseInt(req.query.skip) || 0;
   const limit = parseInt(req.query.limit) || 10;
 
-  const chefs = await Chef.findAll({
+  const chefs = await Chef.findAndCountAll({
     include: {
       model: User,
       as: 'user',
@@ -22,15 +22,17 @@ exports.getAllChefs = catchAsync(async (req, res, next) => {
   res.status(200).json({
     status: 'success',
     results: chefs.length,
-    data: {
-      chefs
-    }
+    chefs
+    
   });
 });
 
 exports.getChef = catchAsync(async (req, res, next) => {
 
-  const chef = await Chef.findByPk(req.params.id);
+  const chef = await Chef.findByPk(req.params.id, {
+    include: [{ model: User, as: 'user' }]
+  });
+
   if (!chef) {
     return res.status(404).json({
       status: 'fail',

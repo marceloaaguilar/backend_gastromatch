@@ -34,6 +34,51 @@ exports.getReservation = catchAsync(async (req, res, next) => {
 
 exports.createReservation = catchAsync(async (req, res, next) => {
   try {
+
+    const { date, chef } = req.body;
+
+    if (!date) {
+      return res.status(400).json({
+        status: 'fail',
+        message: 'A data da reserva é obrigatória.'
+      });
+    }
+
+    const reservationDate = new Date(date);
+    const now = new Date();
+
+
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+
+    if (reservationDate < tomorrow) {
+      return res.status(400).json({
+        status: 'fail',
+        message: 'A reserva deve ser feita com pelo menos 1 dia de antecedência e não pode ser no passado.'
+      });
+    };
+
+
+    const startOfDay = new Date(reservationDate.getFullYear(), reservationDate.getMonth(), reservationDate.getDate(), 0, 0, 0);
+    const endOfDay = new Date(reservationDate.getFullYear(), reservationDate.getMonth(), reservationDate.getDate(), 23, 59, 59, 999);
+
+    const existingReservation = await Reservation.findOne({
+      where: {
+        chef,
+        date: {
+          [Op.between]: [startOfDay, endOfDay]
+        }
+      }
+    });
+
+    if (existingReservation) {
+      return res.status(409).json({
+        status: 'fail',
+        message: 'Já existe uma reserva para este chef nesta data.'
+      });
+    }
+
     const newReservation = await Reservation.create(req.body);
     res.status(201).json({
       status: 'success',
@@ -41,6 +86,9 @@ exports.createReservation = catchAsync(async (req, res, next) => {
         reservation: newReservation
       }
     });
+
+
+
   } catch (error) {
     return res.status(400).json({
       status: 'fail',
